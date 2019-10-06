@@ -6,14 +6,20 @@ import "github.com/globalsign/mgo/bson"
 type Project struct {
 	ID    bson.ObjectId `json:"id" bson:"_id"`
 	Name  string        `json:"name" bson:"name"`
-	Giro   string           `json:"giro" bson:"giro,omitempty"`
+	Bussiness   string           `json:"bussiness" bson:"bussiness,omitempty"`
 	Description   string           `json:"description" bson:"description,omitempty"`
 	Object   string           `json:"object" bson:"object,omitempty"`
 	Public_object   string           `json:"public_object" bson:"public_object,omitempty"`
 	Owner bson.ObjectId `json:"owner" bson:"owner"`
 	Sponsor bson.ObjectId `json:"sponsor" bson:"sponsor,omitempty"`
+	Items	[]Item	`json:"items" bson:"items"`
 }
-
+type Item struct{
+	ID    bson.ObjectId `json:"id" bson:"_id"`
+	Name  string        `json:"name" bson:"name"`
+	Total int			`json:"total" bson:"total"`
+	Collected int		`json:"collected" bson:"collected"`
+}
 // Page : Pagina de resultado
 type Page struct {
 	Metadata []map[string]int `json:"metadata" bson:"metadata,omitempty"`
